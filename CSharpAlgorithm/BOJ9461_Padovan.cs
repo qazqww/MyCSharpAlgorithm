@@ -1,14 +1,15 @@
-﻿using System.Text;
+﻿// https://www.acmicpc.net/problem/9461
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CSharpAlgorithm
 {
-    internal class Program
+    internal class BOJ9461_Padovan
     {
-        static void Main(string[] args)
-        {
-            Solution();
-        }
-
         static void Solution()
         {
             long[] padovan = new long[101];
