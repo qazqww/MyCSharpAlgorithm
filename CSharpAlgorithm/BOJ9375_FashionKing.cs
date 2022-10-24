@@ -1,14 +1,15 @@
-﻿using System.Text;
+﻿// https://www.acmicpc.net/problem/9375
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CSharpAlgorithm
 {
-    internal class Program
+    internal class BOJ9375_FashionKing
     {
-        static void Main(string[] args)
-        {
-            Solution();
-        }
-
         static void Solution()
         {
             int T = int.Parse(Console.ReadLine());
@@ -33,7 +34,8 @@ namespace CSharpAlgorithm
                 }
 
                 int answer = 1;
-                foreach (int val in dict.Values) {
+                foreach (int val in dict.Values)
+                {
                     answer *= (val + 1);
                 }
 
