@@ -11,34 +11,40 @@ namespace CSharpAlgorithm
 
         static void Solution()
         {
-            int T = int.Parse(Console.ReadLine());
-            for (int t = 0; t < T; t++)
+            int n = int.Parse(Console.ReadLine());
+            int answer = 0;
+
+            List<int> list = new List<int>();
+            list.Add(0);
+            int i = 1;
+            while (Math.Pow(i, 2) <= 50000)
             {
-                int n = int.Parse(Console.ReadLine());
-
-                if (n == 0)
-                {
-                    Console.WriteLine(0);
-                    continue;
-                }
-
-                Dictionary<string, int> dict = new Dictionary<string, int>();
-                for (int i = 0; i < n; i++)
-                {
-                    string[] temp = Console.ReadLine().Split();
-                    if (dict.ContainsKey(temp[1]))
-                        dict[temp[1]]++;
-                    else
-                        dict.Add(temp[1], 1);
-                }
-
-                int answer = 1;
-                foreach (int val in dict.Values) {
-                    answer *= (val + 1);
-                }
-
-                Console.WriteLine(answer - 1);
+                list.Add((int)Math.Pow(i++, 2));
             }
+
+            while (n > 0) {
+                int low = 0;
+                int high = list.Count - 1;
+                int mid = -1;
+                while (low < high)
+                {
+                    mid = (low + high) / 2;
+                    Console.WriteLine($"{low} {mid} {high}");
+                    if (list[mid] > n)
+                        high = mid;
+                    else
+                        low = mid + 1;
+                }
+
+                if (n != 0)
+                {
+                    answer++;
+                    n -= list[mid - 1];
+                    Console.WriteLine($"!{list[mid - 1]}");
+                }
+            }
+
+            Console.WriteLine(answer);
         }
     }
 }
